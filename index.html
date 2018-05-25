@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>FakeBloch</title>
+  <meta name="description" content="FakeBloch MRI Simulator">
+  <meta name="author" content="">
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <div class="row">
+
+    <div id='title-div' class="col-md-5">
+      <span class="title">FakeBloch</span>, an MRI simulator
+        <br>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><b>Playback</b></h3>
+        </div>
+        <div class="panel-body">
+
+          <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+          </button>
+
+          <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+          </button>
+
+          <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          </button>
+
+          <form class="form-inline" id="tframe_form" onSubmit="return false;">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">t/frame</span>
+                <input type="number" step="any" class="form-control" value="0.02" id="tframe">
+                <span class="input-group-addon">ms</span>
+              </div>
+            </div>
+          </form>
+
+          <table id="playback_table">
+            <tr>
+              <td>t</td>
+              <td>
+                <span id="t_text">0.0</span> ms</td>
+            </tr>
+            <tr>
+              <td>tr #</td>
+              <td>
+                <span id="tr_text">0</span>
+              </td>
+            </tr>
+            <tr>
+              <td>t_total</td>
+              <td>
+                <span id="ttot_text">0.0</span> ms</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="container">
+    <div id="spin_canvas"></div>
+
+    <canvas id="psd_canvas" width="600" height="398"></canvas>
+  </div>
+
+
+
+  <ul class="nav nav-tabs">
+    <li class="nav active"><a href="#about" data-toggle="tab">About</a></li>
+    <li class="nav"><a href="#presets" data-toggle="tab">Presets</a></li>
+    <li class="nav"><a href="#spins" data-toggle="tab">Spins</a></li>
+    <li class="nav"><a href="#magnet" data-toggle="tab">Magnet</a></li>
+    <li class="nav"><a href="#psd" data-toggle="tab">PSD</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="about">
+      A work in progress MRI simulation website, where the Bloch equations and rendering is all done client side with javascript (typescript).
+      <br>
+      <br> The main goal of this project is to have an educational site where people can get a better idea of how MRI works, without having to install software and with a (hopefully) usable UI.
+      <br>
+      <br>Written by: Mike Loecher
+    </div>
+    <div class="tab-pane fade" id="presets">
+      Goals:
+      <ul>
+        <li>The goal here is to have a bunch of preset settings for various lessons</li>
+      </ul>
+    </div>
+    <div class="tab-pane fade" id="spins">
+      Goals:
+      <ul>
+        <li>Control over which spins are being simulated in the 3D rendering pane</li>
+      </ul>
+    </div>
+    <div class="tab-pane fade" id="magnet">
+      Goals:
+      <ul>
+        <li> Control over field strength, gradients, etc</li>
+      </ul>
+    </div>
+    <div class="tab-pane fade" id="psd">
+      Goals:
+      <ul>
+        <li>Complete control over the PSD</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/OrbitControls.js"></script>
+  <script src="vendor/Detector.js"></script>
+  <script src="vendor/stats.min.js"></script>
+  <script src="js/spin.js"></script>
+  <script src="js/base.js"></script>
+
+</body>
+
+</html>
